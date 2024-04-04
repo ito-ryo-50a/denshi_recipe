@@ -54,3 +54,43 @@ MVPリリース時に作っていたいもの
 レシピ生成時の入力フォームにはオートコンプリート機能を実装し、ユーザーの利便性を高めます。
 検索機能はマルチ検索を実装し、form objectもしくはconcernを使用する予定です。
 LINEとTwitterの共有機能はそれぞれのプラットフォームが提供するAPIを用いて実装する予定です。
+
+■ 使用予定技術
+バックエンド
+・Ruby 3.3.0
+・Ruby on Rails 7.1.3.2
+
+フロントエンド
+・Turbo
+・Stimulus
+
+CSSフレームワーク
+・TailwindCSS
+
+UIコンポーネント
+・daisyUI
+
+テンプレートエンジン
+・slim
+
+データベース
+・postgreSQL
+
+開発環境
+・Docker
+
+バージョン管理
+・Git
+・GitHub
+
+CI/CD
+・GitHubActions
+
+テストフレームワーク
+・RSpec
+
+テストカバレッジ計測
+・simplecov
+
+リントツール
+・rubocop
