@@ -94,3 +94,7 @@ CI/CD
 
 リントツール
 ・rubocop
+
+インフラ
+・Heroku もしくは Render
+・AWS S3
