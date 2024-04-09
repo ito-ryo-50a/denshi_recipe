@@ -96,5 +96,5 @@ CI/CD
 ・rubocop
 
 インフラ
-・Heroku もしくは Render
+・Render
 ・AWS S3
