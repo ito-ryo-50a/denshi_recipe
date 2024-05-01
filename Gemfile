@@ -49,6 +49,10 @@ gem "bootsnap", require: false
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri windows ]
+  gem "rspec-rails", require: false
+  gem "factory_bot_rails", require: false
+  gem "better_errors", require: false
+  gem "binding_of_caller", require: false
 end
 
 group :development do
@@ -60,4 +64,20 @@ group :development do
 
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
   # gem "spring"
+
+  gem "rubocop-performance", require: false
+  gem "rubocop-rails", require: false
+  gem "rubocop-rspec", require: false
+end
+
+group :test do
+  gem "capybara", require: false
+  gem "launchy", require: false
+  gem "selenium-webdriver", require: false
+  gem "webdrivers", require: false
+  gem "database_cleaner", require: false
+  gem "shoulda-matchers", require: false
+  gem "faker", require: false
+  gem "simplecov", require: false
+  gem "vcr", require: false
 end
