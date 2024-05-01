@@ -81,7 +81,6 @@ test:
 # for a full overview on how database connection configuration can be specified.
 #
 #
-# TODO:Production環境のDB変数名は現状”DATABASE_URL”にしますが、適切なものに変更してください。
 production:
   <<: *default
   adapter: postgresql
