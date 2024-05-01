@@ -132,4 +132,3 @@ Figma：https://www.figma.com/file/WcV5ATvkaShrYzPVmSO8m4/%E3%80%8C%E3%83%87%E3%
 ### ER図
 
 <img width="1382" alt="デンシレシピER図" src="https://github.com/ito-ryo-50a/portfolio/assets/146784590/7b384f2e-58fa-4f79-b1dc-5a41c359edeb">
-
