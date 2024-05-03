@@ -1,4 +1,4 @@
-.hero.min-h-screen[style="background-image: url('#{image_url('top_background.jpg')}');"]
+.hero.min-h-screen style="background-image: url('#{image_url('top_background.jpg')}'); position: relative; overflow: hidden;"
   .tr-hero-overlay.absolute.inset-0.bg-white.bg-opacity-50
   .hero-content.text-center.relative.z-10
     .max-w-lg
@@ -64,3 +64,14 @@
     .max-w-lg
       h1.mb-5.text-4xl.font-bold.text-neutral-content
         | 「デンシレシピ」を使ってみる
+.button
+  a.btn.bg-white.my-2.mx-5.text-lg.text-primary.hover:bg-primary.hover:text-white[href="#"]
+    | Apply Button
+  a.btn.bg-white.my-2.mx-5.text-lg.text-app-already.hover:bg-app-already.hover:text-white[href="#"]
+    | Already Button
+  a.btn.bg-white.my-2.mx-5.text-lg.text-app-cancel.hover:bg-app-cancel.hover:text-white[href="#"]
+    | Cancel Button
+  a.btn.bg-white.my-2.mx-5.text-lg.text-app-inactive.border-app-inactive-border.cousor-not-allowed
+    | Inactive Button
+  a.btn.bg-white.my-2.mx-5.text-lg.text-app-edit.hover:bg-app-edit.hover:text-white[href="#"]
+    | Edit Button
