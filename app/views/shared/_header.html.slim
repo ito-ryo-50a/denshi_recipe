@@ -1,6 +1,6 @@
-header
+header.relative.z-10
   .navbar.bg-header-footer
     .flex-1
-      = link_to root_path, class: 'btn btn-ghost normal-case text-xl' do
-        svg width="50" height="50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 178.16 124.98" fill-rule="evenodd" clip-rule="evenodd" class="fill-current"
+      = link_to root_path, class: 'btn btn-ghost normal-case text-xl text-secondary rounded-none hover:bg-primary hover:text-white main-icon' do
+        = image_tag 'microwave.svg', alt: 'Main Icon', width: '50', height: '50'
         | デンシレシピ
