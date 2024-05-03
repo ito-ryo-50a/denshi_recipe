@@ -82,3 +82,7 @@ group :test do
   gem "simplecov", require: false
   gem "vcr", require: false
 end
+
+gem "slim", "~> 5.2"
+
+gem "html2slim-ruby3", "~> 0.2.1"
