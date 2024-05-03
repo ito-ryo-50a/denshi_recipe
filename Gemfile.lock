@@ -132,6 +132,9 @@ GEM
       i18n (>= 1.8.11, < 2)
     globalid (1.2.1)
       activesupport (>= 6.1)
+    hpricot (0.8.6)
+    html2slim-ruby3 (0.2.1)
+      hpricot
     i18n (1.14.4)
       concurrent-ruby (~> 1.0)
     io-console (0.7.2)
@@ -296,6 +299,9 @@ GEM
       simplecov_json_formatter (~> 0.1)
     simplecov-html (0.12.3)
     simplecov_json_formatter (0.1.4)
+    slim (5.2.1)
+      temple (~> 0.10.0)
+      tilt (>= 2.1.0)
     sprockets (4.2.1)
       concurrent-ruby (~> 1.0)
       rack (>= 2.2.4, < 4)
@@ -306,7 +312,9 @@ GEM
     stimulus-rails (1.3.3)
       railties (>= 6.0.0)
     stringio (3.1.0)
+    temple (0.10.3)
     thor (1.3.1)
+    tilt (2.3.0)
     timeout (0.4.1)
     turbo-rails (2.0.5)
       actionpack (>= 6.0.0)
@@ -349,6 +357,7 @@ DEPENDENCIES
   debug
   factory_bot_rails
   faker
+  html2slim-ruby3 (~> 0.2.1)
   jbuilder
   jsbundling-rails
   launchy
@@ -362,6 +371,7 @@ DEPENDENCIES
   selenium-webdriver
   shoulda-matchers
   simplecov
+  slim (~> 5.2)
   sprockets-rails
   stimulus-rails
   turbo-rails
