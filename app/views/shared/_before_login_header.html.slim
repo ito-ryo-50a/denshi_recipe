@@ -1,0 +1,27 @@
+header.relative.z-10
+  .navbar.bg-header-footer
+    .flex-1
+      = link_to root_path, class: 'btn btn-ghost normal-case text-xl text-secondary rounded-lg hover:bg-primary hover:text-white main-icon' do
+        = image_tag 'microwave.svg', alt: 'Main Icon', width: '50', height: '50'
+        | デンシレシピ
+    button.btn.mr-2.text-base.hidden.md:block.bg-white.my-2.mx-2.text-primary.hover:bg-primary.hover:text-white[href="#"]
+      | レシピ一覧
+    button.btn.mr-2.text-base.hidden.md:block.bg-white.my-2.mx-2.text-primary.hover:bg-primary.hover:text-white[href="#"]
+      | 新規登録
+    button.btn.mr-2.text-base.hidden.md:block.bg-white.my-2.mx-2.text-primary.hover:bg-primary.hover:text-white[href="#"]
+      | ログイン
+    .flex-none.md:hidden
+      .dropdown.dropdown-end
+        button.btn.btn-square.btn-ghost.hover:bg-primary.hover:text-white tabindex="0"
+          svg[xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="inline-block w-5 h-5 stroke-current"]
+            path[stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"]
+        ul.dropdown-content.menu.p-2.shadow.bg-base-100.rounded-box.w-52
+          li.hover:bg-primary.hover:text-white.rounded-lg
+            = link_to "#"
+              | レシピ一覧
+          li.hover:bg-primary.hover:text-white.rounded-lg
+            = link_to "#"
+              | 新規登録
+          li.hover:bg-primary.hover:text-white.rounded-lg
+            = link_to "#"
+              | ログイン
