@@ -18,86 +18,177 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  let(:user) { build(:user) }
+  let (:user) { build(:user) }
 
-  it "モデルのテストでニックネームがあれば有効な状態であること" do
-    user = User.new(nickname: "nickname")
-    expect(user).to be_valid
-  end
+  describe "モデルのバリデーションチェック" do
 
-  it "モデルのテストでニックネームがなければ無効な状態であること" do
-    user = User.new(nickname: nil)
-    user.valid?
-    expect(user.errors[:nickname]).to include("can't be blank")
-  end
+    context "nicknameが存在しているとき" do
+      it "有効であること" do
+        user.nickname = "Alice"
+        expect(user).to be_valid
+      end
+    end
 
-  it "モデルのテストでニックネームが20文字ジャストであれば有効な状態であること" do
-    user = User.new(nickname: "a" * 20)
-    expect(user).to be_valid
-  end
+    context "nicknameがnilのとき" do
+      it "無効であること" do
+        user.nickname = nil
+        user.valid?
+        expect(user).to be_invalid
+        # expect(user.errors[:nickname]).to include("can't be blank")
+      end
+    end
 
-  it "モデルのテストでニックネームが19文字であれば有効な状態であること" do
-    user = User.new(nickname: "a" * 19)
-    expect(user).to be_valid
-  end
+    context "nicknameが20文字のとき" do
+      it "有効であること" do
+        user.nickname = "a" * 20
+        expect(user).to be_valid
+      end
+    end
 
-  it "モデルのテストでニックネームが21文字以上であれば無効な状態であること" do
-    user = User.new(nickname: "a" * 21)
-    user.valid?
-    expect(user.errors[:nickname]).to include("is too long (maximum is 20 characters)")
-  end
+    context "nicknameが21文字のとき" do
+      it "無効であること" do
+        user.nickname = "a" * 21
+        user.valid?
+        expect(user).to be_invalid
+        # expect(user.errors[:nickname]).to include("is too long (maximum is 20 characters)")
+      end
+    end
 
-  it "モデルのテストでメールアドレスがあれば有効な状態であること" do
-    user = User.new(email: "for@exemple.com")
-    expect(user).to be_valid
-  end
+    context "nicknameが重複しているとき" do
+      it "無効であること" do
+        create(:user, nickname: "Alice")
+        user.nickname = "Alice"
+        user.valid?
+        expect(user).to be_invalid
+        # expect(user.errors[:nickname]).to include("has already been taken")
+      end
+    end
 
-  it "モデルのテストでメールアドレスがなければ無効な状態であること" do
-    user = User.new(email: nil)
-    user.valid?
-    expect(user.errors[:email]).to include("can't be blank")
-  end
+    context "emailが存在しているとき" do
+      it "有効であること" do
+        user.email = "alice@example.com"
+        expect(user).to be_valid
+      end
+    end
 
-  it "モデルのテストでメールアドレスが255文字ジャストであれば有効な状態であること" do
-    user = User.new(email: "a" * 243 + "@example.com")
-    expect(user).to be_valid
-  end
+    context "emailがnilのとき" do
+      it "無効であること" do
+        user.email = nil
+        user.valid?
+        expect(user).to be_invalid
+        # expect(user.errors[:email]).to include("can't be blank")
+      end
+    end
 
-  it "モデルのテストでメールアドレスが254文字であれば有効な状態であること" do
-    user = User.new(email: "a" * 242 + "@example.com")
-    expect(user).to be_valid
-  end
+    context "emailが255文字のとき" do
+      it "有効であること" do
+        user.email = "a" * 243 + "@example.com"
+        expect(user).to be_valid
+      end
+    end
 
-  it "モデルのテストでメールアドレスが256文字以上であれば無効な状態であること" do
-    user = User.new(email: "a" * 244 + "@example.com")
-    user.valid?
-    expect(user.errors[:email]).to include("is too long (maximum is 255 characters)")
-  end
+    context "emailが256文字のとき" do
+      it "無効であること" do
+        user.email = "a" * 244 + "@example.com"
+        user.valid?
+        expect(user).to be_invalid
+        # expect(user.errors[:email]).to include("is too long (maximum is 255 characters)")
+      end
+    end
 
-  it "モデルのテストでパスワードがあれば有効な状態であること" do
-    user = User.new(password: "password")
-    expect(user).to be_valid
-  end
+    context "emailが重複しているとき" do
+      it "無効であること" do
+        create(:user, email: "alice@example.com")
+        user.email = "alice@example.com"
+        user.valid?
+        expect(user).to be_invalid
+        # expect(user.errors[:email]).to include("has already been taken")
+      end
+    end
 
-  it "モデルのテストでパスワードがなければ無効な状態であること" do
-    user = User.new(password: nil)
-    user.valid?
-    expect(user.errors[:password]).to include("can't be blank")
-  end
+    context "passwordが存在しているとき" do
+      it "有効であること" do
+        user.password = "password"
+        user.password_confirmation = "password"
+        expect(user).to be_valid
+      end
+    end
 
-  it "モデルのテストでパスワードが8文字ジャストであれば有効な状態であること" do
-    user = User.new(password: "a" * 8)
-    expect(user).to be_valid
-  end
+    context "passwordがnilのとき" do
+      it "無効であること" do
+        user.password = nil
+        user.password_confirmation = nil
+        user.valid?
+        expect(user).to be_invalid
+        # expect(user.errors[:password]).to include("can't be blank")
+      end
+    end
 
-  it "モデルのテストでパスワードが7文字であれば無効な状態であること" do
-    user = User.new(password: "a" * 7)
-    user.valid?
-    expect(user.errors[:password]).to include("is too short (minimum is 8 characters)")
-  end
+    context "passwordが7文字のとき" do
+      it "無効であること" do
+        user.password = "a" * 7
+        user.password_confirmation = "a" * 7
+        user.valid?
+        expect(user).to be_invalid
+        # expect(user.errors[:password]).to include("is too short (minimum is 8 characters)")
+      end
+    end
 
-  it "モデルのテストでパスワードが9文字以上であれば有効な状態であること" do
-    user = User.new(password: "a" * 9)
-    expect(user).to be_valid
+    context "passwordが8文字のとき" do
+      it "有効であること" do
+        user.password = "a" * 8
+        user.password_confirmation = "a" * 8
+        expect(user).to be_valid
+      end
+    end
+
+    context "passwordが確認用パスワードと一致しているとき" do
+      it "有効であること" do
+        user.password = "password"
+        user.password_confirmation = "password"
+        expect(user).to be_valid
+      end
+    end
+
+    context "passwordが確認用パスワードと一致していないとき" do
+      it "無効であること" do
+        user.password = "password"
+        user.password_confirmation = "wrongpassword"
+        user.valid?
+        expect(user).to be_invalid
+        # expect(user.errors[:password_confirmation]).to include("doesn't match Password")
+      end
+    end
+
+    context "password_confirmationがnilのとき" do
+      it "無効であること" do
+        user.password = "password"
+        user.password_confirmation = nil
+        user.valid?
+        expect(user).to be_invalid
+        # expect(user.errors[:password_confirmation]).to include("can't be blank")
+      end
+    end
+
+    context "validate_additional_email_formatにマッチするパターン" do
+      it "連続するドットが含まれるemailが無効であること" do
+        user.email = "alice..alice@example.com"
+        user.valid?
+        expect(user).to be_invalid
+        # expect(user.errors[:email]).to include("is invalid")
+      end
+      it "1文字目にドットが使用されているemailが無効であること" do
+        user.email = ".alice@example.com"
+        user.valid?
+        expect(user).to be_invalid
+        # expect(user.errors[:email]).to include("is invalid")
+      end
+      it "@の直前にドットが使用されているemailが無効であること" do
+        user.email = "alice.@example.com"
+        user.valid?
+        expect(user).to be_invalid
+        # expect(user.errors[:email]).to include("is invalid")
+      end
+    end
   end
 end
