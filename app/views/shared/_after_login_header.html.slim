@@ -10,14 +10,7 @@ header.relative.z-10
       | レシピ一覧
     button.btn.mr-2.text-base.hidden.md:block.bg-white.my-2.mx-2.text-primary.hover:bg-primary.hover:text-white[href="#"]
       | ブックマーク
-    button.btn.mr-2.text-base.hidden.md:block.bg-white.my-2.mx-2.text-primary.hover:bg-primary.hover:text-white[href="#"]
-      | 閲覧履歴  ※準備中
-    button.btn.mr-2.text-base.hidden.md:block.bg-white.my-2.mx-2.text-primary.hover:bg-primary.hover:text-white[href="#"]
-      | レシピ提案  ※準備中
-    button.btn.mr-2.text-base.hidden.md:block.bg-white.my-2.mx-2.text-primary.hover:bg-primary.hover:text-white[href="#"]
-      | 自作レシピ投稿  ※準備中
-    button.btn.mr-2.text-base.hidden.md:block.bg-white.my-2.mx-2.text-primary.hover:bg-primary.hover:text-white[href="#"]
-      | ログアウト
+    = link_to 'ログアウト', logout_path, data: { turbo_method: :delete }, class: 'btn mr-2 py-3 text-base hidden md:block bg-white my-2 mx-2 text-primary hover:bg-primary hover:text-white'
     .flex-none.md:hidden
       .dropdown.dropdown-end
         button.btn.btn-square.btn-ghost.hover:bg-primary.hover:text-white tabindex="0"
@@ -43,5 +36,5 @@ header.relative.z-10
             = link_to "#"
               | 自作レシピ投稿  ※準備中
           li.hover:bg-primary.hover:text-white.rounded-lg
-            = link_to '#'
+            = link_to logout_path, data: { turbo_method: :delete }
               | ログアウト

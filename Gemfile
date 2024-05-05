@@ -84,7 +84,6 @@ group :test do
 end
 
 gem "slim", "~> 5.2"
-
 gem "html2slim-ruby3", "~> 0.2.1"
-
 gem "slim_lint", "~> 0.27.0"
+gem "sorcery"

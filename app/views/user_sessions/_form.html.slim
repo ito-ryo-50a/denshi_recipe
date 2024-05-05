@@ -1,0 +1,9 @@
+= form_with url: login_path, method: :post do |f|
+  .field
+    = f.label :email, 'メールアドレス'
+    = f.email_field :email, autofocus: true
+  .field
+    = f.label :password, 'パスワード'
+    = f.password_field :password
+  .actions
+    = f.submit 'ログイン', class: 'btn btn-primary'

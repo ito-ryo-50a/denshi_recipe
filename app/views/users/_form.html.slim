@@ -1,0 +1,19 @@
+= form_with model: @user do |f|
+  .field
+    = f.label :nickname, 'ニックネーム'
+    = f.text_field :nickname, autofocus: true
+
+  .field
+    = f.label :email, 'メールアドレス'
+    = f.email_field :email
+
+  .field
+    = f.label :password, 'パスワード'
+    = f.password_field :password
+
+  .field
+    = f.label :password_confirmation, 'パスワード（確認用）'
+    = f.password_field :password_confirmation
+
+  .actions
+    = f.submit '登録', class: 'btn btn-primary'
