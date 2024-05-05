@@ -413,7 +413,7 @@ DEPENDENCIES
   simplecov
   slim (~> 5.2)
   slim_lint (~> 0.27.0)
-  sorcery (~> 0.17.0)
+  sorcery
   sprockets-rails
   stimulus-rails
   turbo-rails

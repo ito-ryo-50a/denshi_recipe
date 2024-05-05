@@ -4,12 +4,9 @@ header.relative.z-10
       = link_to root_path, class: 'btn btn-ghost normal-case text-xl text-secondary rounded-lg hover:bg-primary hover:text-white main-icon' do
         = image_tag 'microwave.svg', alt: 'Main Icon', width: '50', height: '50'
         | デンシレシピ
-    button.btn.mr-2.text-base.hidden.md:block.bg-white.my-2.mx-2.text-primary.hover:bg-primary.hover:text-white[href="#"]
-      | レシピ一覧
-    button.btn.mr-2.text-base.hidden.md:block.bg-white.my-2.mx-2.text-primary.hover:bg-primary.hover:text-white[href="#"]
-      | 新規登録
-    button.btn.mr-2.text-base.hidden.md:block.bg-white.my-2.mx-2.text-primary.hover:bg-primary.hover:text-white[href="#"]
-      | ログイン
+    = link_to 'レシピ一覧', "#", class: 'btn mr-2 py-3 text-base hidden md:block bg-white my-2 mx-2 text-primary hover:bg-primary hover:text-white'
+    = link_to '新規登録', new_user_path, class: 'btn mr-2 py-3 text-base hidden md:block bg-white my-2 mx-2 text-primary hover:bg-primary hover:text-white'
+    = link_to 'ログイン', login_path, class: 'btn mr-2 py-3 text-base hidden md:block bg-white my-2 mx-2 text-primary hover:bg-primary hover:text-white'
     .flex-none.md:hidden
       .dropdown.dropdown-end
         button.btn.btn-square.btn-ghost.hover:bg-primary.hover:text-white tabindex="0"
@@ -20,8 +17,8 @@ header.relative.z-10
             = link_to "#"
               | レシピ一覧
           li.hover:bg-primary.hover:text-white.rounded-lg
-            = link_to "#"
+            = link_to new_user_path
               | 新規登録
           li.hover:bg-primary.hover:text-white.rounded-lg
-            = link_to "#"
+            = link_to login_path
               | ログイン
