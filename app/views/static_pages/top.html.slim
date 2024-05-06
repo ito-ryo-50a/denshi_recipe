@@ -1,26 +1,13 @@
-.hero.min-h-screen style="background-image: url('#{image_url('top_background.jpg')}'); position: relative; overflow: hidden;"
-  .hero-content.text-center.relative
-    .max-w-lg
-      h1.mb-5.text-5xl.font-bold.text-orange-500
-        | 調理時間 < 自由時間！
-      p.mb-5
-        span.tr-opacity-message
-          b 電子レンジ&時短レシピ&生成AI
-          | で、あなたの調理時間を削減します。
-          b プログラミング学習・資格取得
-          | に取り組む方、
-          b 忙しいワーキングペアレンツの方
-          | にも。
-          b キッチンに立つ時間を減らし、
-          | 机に向かっている時間を増やしましょう。
-          b 今の頑張りが、未来のあなたを変えます。
+/ ヒーローセクション
+.hero.min-h-screen.bg-base-200
+  .container.mx-auto.px-4
+    .image-container.text-center
+      = image_tag 'logo-main-FF7400.svg', class: 'w-3/4 mx-auto'
 
-.hero.min-h-screen
-  .w-screen.max-w-4xl.px-4.my-12
-    .mb-24
-    h2.text-4xl.font-bold.mb-24.text-center
-      | 少しでも机に向かう時間を増やしたい
-    .p-1
+    / テキストコンテンツ
+    .text-content.text-center.mt-12
+      h2.text-4xl.font-bold.mb-4
+        | 少しでも、机に向かう時間を増やしたい
       p.pb-2
         | “お惣菜を出すのは気が引ける”
         br
@@ -28,41 +15,40 @@
       p.pb-2
         | プログラミングや資格取得など、未来に向けた学習のために時間を捻出するために・・・
       p.pb-2
-        | そこで開発されたのがこの「デンシレシピ」です。
-        br
         | セットしたらデスクで作業を続けられる、電子レンジ&時短レシピをAIが生成します!
+
+= link_to 'レシピを見てみる', "#", class: 'btn bg-white my-2 mx-5 text-lg text-primary hover:bg-primary hover:text-white items-center justify-center flex'
+
+/ フィーチャーセクション
 .hero.min-h-screen.bg-base-200
   .w-screen.max-w-4xl.px-4.my-12
     .mb-24
     h2.text-4xl.font-bold.mb-24.text-center
       | 簡単操作ですぐ使える
     .tr-hero-content.flex-col.mb-24.lg:flex-row
-      / = image_tag 'step1.gif', class: "sm:max-w-sm rounded-lg shadow-2xl"
+      / = image_tag '#', class: "sm:max-w-sm rounded-lg shadow-2xl"
       div
         h3.text-3xl.font-bold.mb-4
           | レシピ生成に必要な情報を入力
         p
           | 「デンシレシピ」にログインして、レシピ生成に必要な情報を入力します。食材の種類や調理時間、味付けなどを選択するだけで、AIが最適なレシピを生成します。
     .tr-hero-content.flex-col.mb-24.lg:flex-row-reverse
-      / = image_tag 'step2_w768.jpg', class: "sm:max-w-sm rounded-lg shadow-2xl"
+      / = image_tag '#', class: "sm:max-w-sm rounded-lg shadow-2xl"
       div
         h3.text-3xl.font-bold.mb-4
           | 電子レンジ調理のレシピだけを提案
         p
           | このアプリで提案されるのは家庭用電子レンジ(500wもしくは600w)で調理可能なレシピのみです。電子レンジ調理のレシピだけを提案することで時短を実現。またレシピ検索にご家庭にない調理器具を提案されることもないため、余計な手戻りを防ぐことができます。
     .tr-hero-content.flex-col.mb-24.lg:flex-row
-      / = image_tag 'step3_w768.jpg', class: "sm:max-w-sm rounded-lg shadow-2xl"
+      / = image_tag '#', class: "sm:max-w-sm rounded-lg shadow-2xl"
       div
         h3.text-3xl.font-bold.mb-4
           | お気に入りのレシピはブックマークしておくことが可能です
         p
           | さらに忙しい時は、過去に作ったことがあるレシピを呼び出すことでレシピ生成時間も短縮できます。
-.hero.min-h-screen[style="background-image: url('#{image_url('top_background.jpg')}');"]
-  .hero-overlay.absolute.inset-0.bg-white.bg-opacity-50
-  .hero-content.text-center.relative.z-10
-    .max-w-lg
-      h1.mb-5.text-4xl.font-bold.text-neutral-content
-        | 「デンシレシピ」を使ってみる
+
+.hero.min-h-screen style="background-image: url('#{image_url('logo-main.svg')}'); background-size: 75%; background-position: center; background-repeat: no-repeat;"
+
 .button
   a.btn.bg-white.my-2.mx-5.text-lg.text-primary.hover:bg-primary.hover:text-white[href="#"]
     | Apply Button

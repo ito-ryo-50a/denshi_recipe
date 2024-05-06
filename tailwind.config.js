@@ -33,6 +33,7 @@ module.exports = {
         'app-secondary': '#695954',
         'app-surface': '#FFFFFF',
         'app-background': '#F9F7F4',
+        'app-background-contrast': '#FAF5ED',
         'app-danger': '#FF0000',
         'app-success': '17DB4E',
         'app-alert': '#FAB515',
