@@ -1,4 +1,5 @@
 = form_with model: @user do |f|
+  = render 'shared/error_messages', object: @user
   .field
     = f.label :nickname, 'ニックネーム'
     = f.text_field :nickname, autofocus: true
