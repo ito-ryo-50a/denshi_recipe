@@ -13,6 +13,7 @@ AllCops:
     - "app/validators/attachment_validator.rb"
     - "node_modules/**/*"
     - "Gemfile"
+    - "app/helpers/application_helper.rb"
   DisplayCopNames: true
 
 Rails:
