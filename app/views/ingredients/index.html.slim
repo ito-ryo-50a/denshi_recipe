@@ -1,0 +1,23 @@
+input type="text" id="ingredient_input"
+div id="ingredient_suggestions"
+
+javascript:
+  document.getElementById('ingredient_input').addEventListener('input', function() {
+    var input = this.value;
+    if(input.length > 0 ) {
+      fetch(`/ingredients/search?query=${input}`)
+        .then(response => response.json())
+        .then(data => {
+          const suggestions = document.getElementById('ingredient_suggestions');
+          suggestions.innerHTML = '';
+          data.forEach(function(item) {
+            const div = document.createElement('div');
+            div.textContent = item;
+            suggestions.appendChild(div);
+          });
+        })
+        .catch(error => console.error('Error:', error));
+    } else {
+      document.getElementById('ingredient_suggestions').innerHTML = '';
+    }
+  });
