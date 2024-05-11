@@ -1,4 +1,4 @@
-input type="text" id="ingredient_input" class="form-input"
+input type="text" id="ingredient_input"
     div id="ingredient_suggestions" class="absolute z-10 w-full bg-white shadow-md mt-1"
 
     javascript:
@@ -8,13 +8,11 @@ input type="text" id="ingredient_input" class="form-input"
           fetch(`/ingredients/search?query=${input}`)
             .then(response => response.json())
             .then(data => {
-              console.log(data);
               const suggestions = document.getElementById('ingredient_suggestions');
               suggestions.innerHTML = '';
               data.forEach(item => {
                 const div = document.createElement('div');
                 div.textContent = item;
-                console.log(div);
                 div.className = "p-2 hover:bg-gray-200 cursor-pointer";
                 div.onclick = function() {
                   document.getElementById('ingredient_input').value = this.textContent;
