@@ -4,7 +4,10 @@
 #
 #  id           :bigint           not null, primary key
 #  cooking_time :string
+#  cuisine_type :string           not null
+#  dish_type    :string           not null
 #  name         :string           not null
+#  number       :integer          not null
 #  created_at   :datetime         not null
 #  updated_at   :datetime         not null
 #  user_id      :bigint           not null

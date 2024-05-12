@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_05_10_151934) do
+ActiveRecord::Schema[7.1].define(version: 2024_05_12_145543) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -24,23 +24,22 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_10_151934) do
     t.string "display_name"
   end
 
-  create_table "recipe_details", force: :cascade do |t|
-    t.bigint "recipe_id", null: false
-    t.integer "cooking_steps"
-    t.text "description", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["recipe_id"], name: "index_recipe_details_on_recipe_id"
-  end
-
   create_table "recipe_ingredients", force: :cascade do |t|
     t.bigint "recipe_id", null: false
-    t.bigint "ingredient_id", null: false
     t.string "quantity"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["ingredient_id"], name: "index_recipe_ingredients_on_ingredient_id"
+    t.string "ingredient_name", null: false
     t.index ["recipe_id"], name: "index_recipe_ingredients_on_recipe_id"
+  end
+
+  create_table "recipe_procedures", force: :cascade do |t|
+    t.bigint "recipe_id", null: false
+    t.integer "order", null: false
+    t.text "procedure", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["recipe_id"], name: "index_recipe_procedures_on_recipe_id"
   end
 
   create_table "recipes", force: :cascade do |t|
@@ -49,6 +48,9 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_10_151934) do
     t.string "cooking_time"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "cuisine_type", null: false
+    t.string "dish_type", null: false
+    t.integer "number", null: false
     t.index ["user_id"], name: "index_recipes_on_user_id"
   end
 
@@ -63,8 +65,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_10_151934) do
     t.index ["nickname"], name: "index_users_on_nickname", unique: true
   end
 
-  add_foreign_key "recipe_details", "recipes"
-  add_foreign_key "recipe_ingredients", "ingredients"
   add_foreign_key "recipe_ingredients", "recipes"
+  add_foreign_key "recipe_procedures", "recipes"
   add_foreign_key "recipes", "users"
 end

@@ -1,4 +1,5 @@
 class RecipesController < ApplicationController
+  before_action :set_recipe, only: %i[show edit update destroy]
   def new; end
 
   def create
@@ -44,5 +45,68 @@ class RecipesController < ApplicationController
     response = Faraday.post('https://api.openai.com/v1/chat/completions', body.to_json, headers)
 
     Rails.logger.info "API Response: #{response.body}"
+
+    # レスポンスデータのパース
+    response_data = JSON.parse(response.body).dig('choices', 0, 'message', 'content')
+
+    # レシピの作成
+    @recipe = Recipe.new(
+      user_id: current_user.id,
+      name: response_data.split('Dish name: ')[1].split('Cooking time:')[0].strip,
+      cooking_time: response_data.split('Cooking time: ')[1].split('Ingredients:')[0].strip.to_i
+    )
+
+    if @recipe.save
+      # 材料と数量の保存
+      ingredients_text = response_data.split('Ingredients:')[1].split('Cooking steps:')[0].strip
+      ingredients = ingredients_text.split("\n").map { |line| line.strip.sub(/^- /, '') }
+      ingredients.each_with_index do |ingredient, _index|
+        ingredient_name, quantity = ingredient.split(':').map(&:strip)
+        @recipe.recipe_ingredients.create(ingredient_name: ingredient_name, quantity: quantity)
+      end
+
+      # 調理手順の保存
+      steps_text = response_data.split('Cooking steps:')[1].strip
+      steps = steps_text.split("\n")
+      steps.each_with_index do |step, index|
+        @recipe.recipe_procedures.create(order: index + 1, procedure: step)
+      end
+
+      redirect_to recipe_path(@recipe), notice: 'レシピが正常に作成されました。'
+    else
+      render :new, status: :unprocessable_entity
+    end
+  end
+
+  def show; end
+
+  def index
+    @recipes = Recipe.all
+  end
+
+  def destroy
+    recipe = Recipe.find(params[:id])
+    recipe.destroy
+    redirect_to recipes_path, notice: 'レシピが正常に削除されました。'
+  end
+
+  def edit; end
+
+  def update
+    recipe = Recipe.find(params[:id])
+    recipe.update!(recipe_params)
+    redirect_to recipe_path(recipe), notice: 'レシピが正常に更新されました。'
+  end
+
+  private
+
+  def recipe_params
+    params.require(:recipe).permit(:name, :cooking_time, :cuisine_type, :dish_type, :number,
+                                   recipe_ingredients_attributes: %i[id ingredient_name quantity _destroy],
+                                   recipe_procedures_attributes: %i[id order procedure _destroy])
+  end
+
+  def set_recipe
+    @recipe = Recipe.find(params[:id])
   end
 end
