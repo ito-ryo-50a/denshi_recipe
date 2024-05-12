@@ -44,20 +44,24 @@ class RecipesController < ApplicationController
 
     response = Faraday.post('https://api.openai.com/v1/chat/completions', body.to_json, headers)
 
+    # ログにAPIのレスポンスを出力
     Rails.logger.info "API Response: #{response.body}"
 
-    # レスポンスデータのパース
+    # レスポンスデータのパースを行う
     response_data = JSON.parse(response.body).dig('choices', 0, 'message', 'content')
 
-    # レシピの作成
+    # レシピの作成処理の箇所
     @recipe = Recipe.new(
       user_id: current_user.id,
       name: response_data.split('Dish name: ')[1].split('Cooking time:')[0].strip,
-      cooking_time: response_data.split('Cooking time: ')[1].split('Ingredients:')[0].strip.to_i
+      cooking_time: response_data.split('Cooking time: ')[1].split('Ingredients:')[0].strip.to_i,
+      cuisine_type: cuisine_type,
+      dish_type: dish_type,
+      number: number
     )
 
     if @recipe.save
-      # 材料と数量の保存
+      # 食材と分量を保存
       ingredients_text = response_data.split('Ingredients:')[1].split('Cooking steps:')[0].strip
       ingredients = ingredients_text.split("\n").map { |line| line.strip.sub(/^- /, '') }
       ingredients.each_with_index do |ingredient, _index|
@@ -65,7 +69,7 @@ class RecipesController < ApplicationController
         @recipe.recipe_ingredients.create(ingredient_name: ingredient_name, quantity: quantity)
       end
 
-      # 調理手順の保存
+      # 調理手順を保存
       steps_text = response_data.split('Cooking steps:')[1].strip
       steps = steps_text.split("\n")
       steps.each_with_index do |step, index|

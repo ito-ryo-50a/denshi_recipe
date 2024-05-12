@@ -19,4 +19,4 @@
       ul.mt-4
         h2.text-2xl.font-bold = "調理手順"
         - @recipe.recipe_procedures.order(:order).each do |procedure|
-          li = "#{procedure.order}. #{procedure.procedure}"
+          li = "#{procedure.procedure}"
