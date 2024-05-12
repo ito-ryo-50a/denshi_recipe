@@ -1,6 +1,6 @@
 class DropRecipeDetails < ActiveRecord::Migration[7.1]
   def up
-    drop_table :recipe_details
+    drop_table :recipe_details if ActiveRecord::Base.connection.table_exists? :recipe_details
   end
 
   def down
