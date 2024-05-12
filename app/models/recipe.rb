@@ -4,7 +4,10 @@
 #
 #  id           :bigint           not null, primary key
 #  cooking_time :string
+#  cuisine_type :string           not null
+#  dish_type    :string           not null
 #  name         :string           not null
+#  number       :integer          not null
 #  created_at   :datetime         not null
 #  updated_at   :datetime         not null
 #  user_id      :bigint           not null
@@ -19,8 +22,7 @@
 #
 class Recipe < ApplicationRecord
   belongs_to :user
-  has_one :recipe_detail, dependent: :destroy
+  has_many :recipe_procedures, dependent: :destroy
   has_many :recipe_ingredients, dependent: :destroy
-  has_many :ingredients, through: :recipe_ingredients
-  accepts_nested_attributes_for :recipe_detail, :recipe_ingredients, allow_destroy: true
+  accepts_nested_attributes_for :recipe_ingredients, :recipe_procedures, allow_destroy: true
 end
