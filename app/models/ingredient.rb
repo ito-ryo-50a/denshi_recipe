@@ -12,8 +12,10 @@
 #  updated_at    :datetime         not null
 #
 class Ingredient < ApplicationRecord
-  has_many :recipe_ingredients
-  has_many :recipes, through: :recipe_ingredients
+  validates :name_hiragana, presence: true, uniqueness: true
+  validates :name_katakana, presence: true, uniqueness: true
+  validates :name_kanji, presence: true, uniqueness: true
+  validates :display_name, presence: true, uniqueness: true
 
   def self.search_by_name(query)
     where('name_hiragana LIKE :q OR name_katakana LIKE :q OR name_kanji LIKE :q', q: "%#{query}%")

@@ -1,12 +1,26 @@
-div = @recipe.dish_name
-    div = "#{@recipe.cooking_time} 分"
-    div = @recipe.ingredient_1
-    div = @recipe.ingredient_2
-    div = @recipe.ingredient_3
-    div = @recipe.ingredient_4
-    div = @recipe.ingredient_5
-    div = @recipe.ingredient_6
-    div = @recipe.ingredient_7
-    div = @recipe.cooking_steps_1
-    div = @recipe.cooking_steps_2
-    div = @recipe.cooking_steps_3
+div = @dish_name
+div = "#{@cooking_time} 分"
+div
+  - if @ingredient_1
+    = "#{@ingredient_1}: #{@quantity_1}"
+div
+  - if @ingredient_2
+    = "#{@ingredient_2}: #{@quantity_2}"
+div
+  - if @ingredient_3
+    = "#{@ingredient_3}: #{@quantity_3}"
+div
+  - if @ingredient_4
+    = "#{@ingredient_4}: #{@quantity_4}"
+div
+  - if @ingredient_5
+    = "#{@ingredient_5}: #{@quantity_5}"
+div
+  - if @ingredient_6
+    = "#{@ingredient_6}: #{@quantity_6}"
+div
+  - if @ingredient_7
+    = "#{@ingredient_7}: #{@quantity_7}"
+div = @cooking_steps_1
+div = @cooking_steps_2
+div = @cooking_steps_3

@@ -44,7 +44,5 @@ class RecipesController < ApplicationController
     response = Faraday.post('https://api.openai.com/v1/chat/completions', body.to_json, headers)
 
     Rails.logger.info "API Response: #{response.body}"
-
-    @response_data = JSON.parse(response.body)
   end
 end
