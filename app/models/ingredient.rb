@@ -14,4 +14,8 @@
 class Ingredient < ApplicationRecord
   has_many :recipe_ingredients
   has_many :recipes, through: :recipe_ingredients
+
+  def self.search_by_name(query)
+    where('name_hiragana LIKE :q OR name_katakana LIKE :q OR name_kanji LIKE :q', q: "%#{query}%")
+  end
 end
