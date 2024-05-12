@@ -397,6 +397,7 @@ DEPENDENCIES
   debug
   factory_bot_rails
   faker
+  faraday
   html2slim-ruby3 (~> 0.2.1)
   jbuilder
   jsbundling-rails
