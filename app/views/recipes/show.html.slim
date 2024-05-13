@@ -1,22 +1,25 @@
+  h1.text-center.text-2xl.font-bold.my-10 レシピ詳細
+  .card.flex.flex-col.justify-center.items-center.bg-white.rounded-lg.mx-5.my-10
     .container.mx-auto.p-4
-      h1.text-3xl.font-bold.mt-4 = @recipe.name
-      div.mt-2
-        span.font-semibold = "調理時間: "
+      h1.text-3xl.font-bold.mt-4.text-center = @recipe.name
+      div.mt-4
+        span.font-semibold = "調理時間(目安): "
         span = "#{@recipe.cooking_time}分"
-      div.mt-2
-        span.font-semibold = "料理の種類: "
+      div.mt-3
+        span.font-semibold = "料理のテイスト: "
         span = @recipe.cuisine_type
-      div.mt-2
+      div.mt-3
         span.font-semibold = "料理のタイプ: "
         span = @recipe.dish_type
-      div.mt-2
-        span.font-semibold = "人数: "
-        span = @recipe.number
+      div.mt-3
+        span.font-semibold = "分量: "
+        span = "#{@recipe.number} 名分"
       ul.mt-4
         h2.text-2xl.font-bold = "材料"
         - @recipe.recipe_ingredients.each do |ingredient|
           li = "#{ingredient.ingredient_name}: #{ingredient.quantity}"
       ul.mt-4
-        h2.text-2xl.font-bold = "調理手順"
+        h2.text-2xl.font-bold = "作り方"
         - @recipe.recipe_procedures.order(:order).each do |procedure|
           li = "#{procedure.procedure}"
+    = link_to '戻る', recipes_path, class: "btn btn-secondary w-1/5 mt-4 mb-10"

@@ -1,8 +1,18 @@
 class RecipesController < ApplicationController
   before_action :set_recipe, only: %i[show edit update destroy]
+  before_action :require_login, only: %i[new create edit update destroy]
+  skip_before_action :require_login, only: %i[index show]
+
+  def index
+    @recipes = Recipe.all
+  end
+
+  def show; end
+
   def new; end
 
   def create
+    # ユーザーの入力値をフォームから取得
     cuisine_type = params[:cuisine_type]
     dish_type = params[:dish_type]
     ingredients = [params[:ingredients1], params[:ingredients2], params[:ingredients3]]
@@ -11,6 +21,7 @@ class RecipesController < ApplicationController
     allergy_restrictions = params[:allergy_restrictions]
     cooking_time = params[:cooking_time]
 
+    # OpenAI APIへリクエストを送信する
     headers = {
       'Authorization' => "Bearer #{ENV.fetch('OPENAI_API_KEY', nil)}",
       'Content-Type' => 'application/json'
@@ -44,9 +55,6 @@ class RecipesController < ApplicationController
 
     response = Faraday.post('https://api.openai.com/v1/chat/completions', body.to_json, headers)
 
-    # ログにAPIのレスポンスを出力
-    Rails.logger.info "API Response: #{response.body}"
-
     # レスポンスデータのパースを行う
     response_data = JSON.parse(response.body).dig('choices', 0, 'message', 'content')
 
@@ -59,7 +67,7 @@ class RecipesController < ApplicationController
       dish_type: dish_type,
       number: number
     )
-
+    # TODO: エラーハンドリング追加時にsaveの条件見直し（save可能であれば、残りのレスポンスはまとめてどこかのレコードに入れてユーザーに表示できるよう検討）
     if @recipe.save
       # 食材と分量を保存
       ingredients_text = response_data.split('Ingredients:')[1].split('Cooking steps:')[0].strip
@@ -76,22 +84,11 @@ class RecipesController < ApplicationController
         @recipe.recipe_procedures.create(order: index + 1, procedure: step)
       end
 
-      redirect_to recipe_path(@recipe), notice: 'レシピが正常に作成されました。'
+      redirect_to recipe_path(@recipe), notice: 'レシピを作成しました。'
     else
+      flash.now[:alert] = 'レシピの作成に失敗しました。'
       render :new, status: :unprocessable_entity
     end
-  end
-
-  def show; end
-
-  def index
-    @recipes = Recipe.all
-  end
-
-  def destroy
-    recipe = Recipe.find(params[:id])
-    recipe.destroy
-    redirect_to recipes_path, notice: 'レシピが正常に削除されました。'
   end
 
   def edit; end
@@ -99,7 +96,13 @@ class RecipesController < ApplicationController
   def update
     recipe = Recipe.find(params[:id])
     recipe.update!(recipe_params)
-    redirect_to recipe_path(recipe), notice: 'レシピが正常に更新されました。'
+    redirect_to recipe_path(recipe), notice: 'レシピを更新しました。'
+  end
+
+  def destroy
+    recipe = Recipe.find(params[:id])
+    recipe.destroy
+    redirect_to recipes_path, notice: 'レシピを削除しました。', status: :see_other
   end
 
   private
