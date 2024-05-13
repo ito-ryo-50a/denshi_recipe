@@ -15,7 +15,7 @@ export default class extends Controller {
           data.forEach(item => {
             const div = document.createElement('div');
             div.textContent = item;
-            div.className = "p-2 hover:bg-gray-200 cursor-pointer";
+            div.className = "p-2 hover:bg-gray-200 cursor-pointer hover:text-blue-500 mx-1 my-1 rounded-md";
             div.addEventListener('click', () => {
               this.inputTarget.value = div.textContent;
               this.suggestionsTarget.innerHTML = '';

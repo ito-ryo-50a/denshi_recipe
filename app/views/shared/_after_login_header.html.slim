@@ -4,12 +4,9 @@ header.relative.z-10
       = link_to root_path, class: 'btn btn-ghost normal-case text-xl text-secondary rounded-lg hover:bg-primary hover:text-white main-icon' do
         = image_tag 'microwave.svg', alt: 'Main Icon', width: '50', height: '50'
         | デンシレシピ
-    button.btn.mr-2.text-base.hidden.md:block.bg-white.my-2.mx-2.text-primary.hover:bg-primary.hover:text-white[href="#"]
-      | レシピ生成
-    button.btn.mr-2.text-base.hidden.md:block.bg-white.my-2.mx-2.text-primary.hover:bg-primary.hover:text-white[href="#"]
-      | レシピ一覧
-    button.btn.mr-2.text-base.hidden.md:block.bg-white.my-2.mx-2.text-primary.hover:bg-primary.hover:text-white[href="#"]
-      | ブックマーク
+    = link_to 'レシピ生成', new_recipe_path, class: 'btn mr-2 py-3 text-base hidden md:block bg-white my-2 mx-2 text-primary hover:bg-primary hover:text-white'
+    = link_to 'レシピ一覧', recipes_path, class: 'btn mr-2 py-3 text-base hidden md:block bg-white my-2 mx-2 text-primary hover:bg-primary hover:text-white'
+    = link_to 'ブックマーク', "#", class: 'btn mr-2 py-3 text-base hidden md:block bg-white my-2 mx-2 text-primary hover:bg-primary hover:text-white'
     = link_to 'ログアウト', logout_path, data: { turbo_method: :delete }, class: 'btn mr-2 py-3 text-base hidden md:block bg-white my-2 mx-2 text-primary hover:bg-primary hover:text-white'
     .flex-none.md:hidden
       .dropdown.dropdown-end
@@ -18,10 +15,10 @@ header.relative.z-10
             path[stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"]
         ul.dropdown-content.menu.p-2.shadow.bg-base-100.rounded-box.w-52
           li.hover:bg-primary.hover:text-white.rounded-lg
-            = link_to "#"
+            = link_to new_recipe_path
               | レシピ生成
           li.hover:bg-primary.hover:text-white.rounded-lg
-            = link_to "#"
+            = link_to recipes_path
               | レシピ一覧
           li.hover:bg-primary.hover:text-white.rounded-lg
             = link_to "#"
