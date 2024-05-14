@@ -15,11 +15,23 @@ class RecipesController < ApplicationController
     # ユーザーの入力値をフォームから取得
     cuisine_type = params[:cuisine_type]
     dish_type = params[:dish_type]
-    ingredients = [params[:ingredients1], params[:ingredients2], params[:ingredients3]]
+    ingredient1 = params[:ingredient1]
+    ingredient2 = params[:ingredient2]
+    ingredient3 = params[:ingredient3]
     number = params[:number]
     additional_ingredient_suggestions = params[:additional_ingredient_suggestions]
     allergy_restrictions = params[:allergy_restrictions]
     cooking_time = params[:cooking_time]
+
+    Rails.logger.info("cuisine_type: #{cuisine_type}")
+    Rails.logger.info("dish_type: #{dish_type}")
+    Rails.logger.info("ingredient1: #{ingredient1}")
+    Rails.logger.info("ingredient2: #{ingredient2}")
+    Rails.logger.info("ingredient3: #{ingredient3}")
+    Rails.logger.info("number: #{number}")
+    Rails.logger.info("additional_ingredient_suggestions: #{additional_ingredient_suggestions}")
+    Rails.logger.info("allergy_restrictions: #{allergy_restrictions}")
+    Rails.logger.info("cooking_time: #{cooking_time}")
 
     # OpenAI APIへリクエストを送信する
     headers = {
@@ -39,7 +51,7 @@ class RecipesController < ApplicationController
           content: "Generate a recipe based on the following details:
           Cuisine type: #{cuisine_type},
           Dish type: #{dish_type},
-          Ingredients: #{ingredients.join(', ')},
+          Ingredients: #{ingredient1}, #{ingredient2}, #{ingredient3}, # Ensure these ingredients are always used
           Number of servings: #{number},
           Additional ingredients allowed: #{additional_ingredient_suggestions},
           Allergies: #{allergy_restrictions},
