@@ -22,6 +22,7 @@
 #
 class Recipe < ApplicationRecord
   belongs_to :user
+  has_many :bookmarks, dependent: :destroy
   has_many :recipe_procedures, dependent: :destroy
   has_many :recipe_ingredients, dependent: :destroy
   accepts_nested_attributes_for :recipe_ingredients, :recipe_procedures, allow_destroy: true

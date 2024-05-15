@@ -10,7 +10,11 @@ Rails.application.routes.draw do
   resources :recipes do
     resources :recipe_ingredients
     resources :recipe_details
+    collection do
+      get :bookmarks
+    end
   end
   get 'ingredients/search', to: 'ingredients#search'
   resources :ingredients
+  resources :bookmarks, only: %i[create destroy]
 end

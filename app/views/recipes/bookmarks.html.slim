@@ -1,0 +1,8 @@
+- if @bookmark_recipes.present?
+  - @bookmark_recipes.each do |recipe|
+    = render 'shared/recipe_heading', recipe: recipe
+- else
+  p.text-center お気に入り登録したレシピがありません
+
+= link_to recipes_path, class: 'btn btn-primary' do
+  | レシピ一覧へ戻る

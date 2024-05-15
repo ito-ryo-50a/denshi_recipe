@@ -107,6 +107,10 @@ class RecipesController < ApplicationController
     redirect_to recipes_path, notice: 'レシピを削除しました。', status: :see_other
   end
 
+  def bookmarks
+    @bookmark_recipes = current_user.bookmark_recipes.page(params[:page]).per(10).order(updated_at: :desc)
+  end
+
   private
 
   def recipe_params

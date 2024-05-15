@@ -15,4 +15,5 @@
         div.mt-3
           span.font-semibold = "分量: "
           span = "#{recipe.number} 名分"
-
+      div.mt-4
+        = render 'recipes/bookmark_buttons', recipe: recipe

@@ -1,3 +1,5 @@
+const { iconsPlugin, getIconCollections } = require("@egoist/tailwindcss-icons");
+
 module.exports = {
   content: [
     './app/views/**/*.html.erb',
@@ -7,7 +9,10 @@ module.exports = {
     './app/javascript/**/*.js'
   ],
   plugins: [
-    require('daisyui')
+    require('daisyui'),
+    iconsPlugin({
+      collections: getIconCollections(["mdi", "lucide"])
+    }),
   ],
   daisyui: {
     darkTheme: false,
