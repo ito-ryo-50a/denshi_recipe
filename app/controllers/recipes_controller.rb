@@ -4,7 +4,7 @@ class RecipesController < ApplicationController
   skip_before_action :require_login, only: %i[index show]
 
   def index
-    @recipes = Recipe.all
+    @recipes = Recipe.page(params[:page]).per(10).order(updated_at: :desc)
   end
 
   def show; end
