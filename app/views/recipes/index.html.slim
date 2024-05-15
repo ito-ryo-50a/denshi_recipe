@@ -1,3 +1,6 @@
+- content_for :title do
+  | レシピ一覧
+
 - @recipes.each do |recipe|
   = render 'shared/recipe_heading', recipe: recipe
 
