@@ -2,9 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-@import "bootstrap-icons/font/bootstrap-icons.css";
-@import "@fortawesome/fontawesome-free/css/all.css";
-
 .main-icon:hover img {
   content: url('microwave_white.svg');
 }
