@@ -6,7 +6,7 @@ header.relative.z-10
         | デンシレシピ
     = link_to 'レシピ生成', new_recipe_path, class: 'btn mr-2 py-3 text-base hidden md:block bg-white my-2 mx-2 text-primary hover:bg-primary hover:text-white'
     = link_to 'レシピ一覧', recipes_path, class: 'btn mr-2 py-3 text-base hidden md:block bg-white my-2 mx-2 text-primary hover:bg-primary hover:text-white'
-    = link_to 'ブックマーク', "#", class: 'btn mr-2 py-3 text-base hidden md:block bg-white my-2 mx-2 text-primary hover:bg-primary hover:text-white'
+    = link_to 'ブックマーク', bookmarks_recipes_path, class: 'btn mr-2 py-3 text-base hidden md:block bg-white my-2 mx-2 text-primary hover:bg-primary hover:text-white'
     = link_to 'ログアウト', logout_path, data: { turbo_method: :delete }, class: 'btn mr-2 py-3 text-base hidden md:block bg-white my-2 mx-2 text-primary hover:bg-primary hover:text-white'
     .flex-none.md:hidden
       .dropdown.dropdown-end
