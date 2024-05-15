@@ -1,0 +1,18 @@
+  h1.text-center.text-2xl.font-bold.my-10
+  .card.flex.flex-col.justify-center.items-center.bg-white.rounded-lg.mx-5.my-10.shadow-md.hover:border-2.hover:border-primary
+    .container.mx-auto.p-4
+      = link_to recipe_path(recipe) do
+        h1.text-3xl.font-bold.mt-4.text-center = recipe.name
+        div.mt-4
+          span.font-semibold = "調理時間(目安): "
+          span = "#{recipe.cooking_time}分"
+        div.mt-3
+          span.font-semibold = "料理のテイスト: "
+          span = recipe.cuisine_type
+        div.mt-3
+          span.font-semibold = "料理のタイプ: "
+          span = recipe.dish_type
+        div.mt-3
+          span.font-semibold = "分量: "
+          span = "#{recipe.number} 名分"
+

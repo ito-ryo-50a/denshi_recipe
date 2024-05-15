@@ -1,1 +1,4 @@
-h1 index
+- @recipes.each do |recipe|
+  = render 'shared/recipe_heading', recipe: recipe
+
+= paginate @recipes
