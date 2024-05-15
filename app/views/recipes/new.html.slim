@@ -1,3 +1,6 @@
+- content_for :title do
+  | レシピ生成
+
 h1.text-center.text-2xl.font-bold.my-10 レシピを生成する
 .card.flex.flex-col.justify-center.items-center.bg-white.shadow-md.rounded-lg.mx-5.my-10
   = form_with model: @recipe, url: recipes_path, local: true, class: "space-y-4" do |f|

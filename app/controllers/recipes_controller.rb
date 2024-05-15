@@ -23,16 +23,6 @@ class RecipesController < ApplicationController
     allergy_restrictions = params[:allergy_restrictions]
     cooking_time = params[:cooking_time]
 
-    Rails.logger.info("cuisine_type: #{cuisine_type}")
-    Rails.logger.info("dish_type: #{dish_type}")
-    Rails.logger.info("ingredient1: #{ingredient1}")
-    Rails.logger.info("ingredient2: #{ingredient2}")
-    Rails.logger.info("ingredient3: #{ingredient3}")
-    Rails.logger.info("number: #{number}")
-    Rails.logger.info("additional_ingredient_suggestions: #{additional_ingredient_suggestions}")
-    Rails.logger.info("allergy_restrictions: #{allergy_restrictions}")
-    Rails.logger.info("cooking_time: #{cooking_time}")
-
     # OpenAI APIへリクエストを送信する
     headers = {
       'Authorization' => "Bearer #{ENV.fetch('OPENAI_API_KEY', nil)}",
