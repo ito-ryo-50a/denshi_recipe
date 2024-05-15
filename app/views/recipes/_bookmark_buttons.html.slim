@@ -1,0 +1,4 @@
+- if current_user&.bookmark?(recipe)
+  = render 'recipes/unbookmark', recipe: recipe
+- else
+  = render 'recipes/bookmark', recipe: recipe

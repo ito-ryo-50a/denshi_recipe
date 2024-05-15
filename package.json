@@ -5,6 +5,7 @@
     "@hotwired/stimulus": "^3.2.2",
     "@hotwired/turbo-rails": "^8.0.4",
     "autoprefixer": "^10.4.19",
+    "bootstrap-icons": "^1.11.3",
     "daisyui": "^4.10.3",
     "esbuild": "^0.20.2",
     "postcss": "^8.4.38",
@@ -13,5 +14,10 @@
   "scripts": {
     "build": "esbuild app/javascript/*.* --bundle --sourcemap --format=esm --outdir=app/assets/builds --public-path=/assets",
     "build:css": "tailwindcss -i ./app/assets/stylesheets/application.tailwind.css -o ./app/assets/builds/application.css --minify"
+  },
+  "devDependencies": {
+    "@egoist/tailwindcss-icons": "^1.8.0",
+    "@iconify-json/lucide": "^1.1.187",
+    "@iconify-json/mdi": "^1.1.66"
   }
 }
