@@ -25,6 +25,10 @@ h1.text-center.text-2xl.font-bold.my-10 レシピ詳細
       h2.text-2xl.font-bold = "作り方"
       - @recipe.recipe_procedures.order(:order).each do |procedure|
         li = "#{procedure.procedure}"
+  = link_to "https://twitter.com/share?url=#{recipe_url(@recipe)}&text=【生成AI&電子レンジ調理で手放しクッキング「デンシレシピ」ぜひ使ってみてください！】%0a%0a#{@recipe.name}", target: '_blank', data: { toggle: "tooltip", placement: "bottom" },class: "mt-4 x-button bg-primary text-white rounded-md", title: "Xでシェア" do
+    i.i-simple-icons-x.x-icon
+
   = render 'comments/form', comment: @comment, recipe: @recipe
   = render @comments
   = link_to '戻る', recipes_path, class: "btn btn-secondary w-1/5 mt-4 mb-10"
+
