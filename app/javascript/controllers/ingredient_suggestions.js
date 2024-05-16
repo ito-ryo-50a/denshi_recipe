@@ -1,6 +1,6 @@
 console.log("Hello from ingredient_suggestions.js!");
 
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("turbo:load", () => {
   const inputs = document.querySelectorAll('input[id^="ingredient"]');
 
   inputs.forEach(input => {
