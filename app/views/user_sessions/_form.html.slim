@@ -4,6 +4,6 @@
     = f.email_field :email, autofocus: true
   .field
     = f.label :password, 'パスワード'
-    = f.password_field :password
+    = f.password_field :password, autocomplete: 'current-password'
   .actions
     = f.submit 'ログイン', class: 'btn btn-primary'
