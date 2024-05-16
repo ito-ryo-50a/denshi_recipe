@@ -11,7 +11,7 @@ module.exports = {
   plugins: [
     require('daisyui'),
     iconsPlugin({
-      collections: getIconCollections(["mdi", "lucide"])
+      collections: getIconCollections(["mdi", "lucide", "simple-icons"])
     }),
   ],
   daisyui: {
