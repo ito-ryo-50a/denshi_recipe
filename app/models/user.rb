@@ -17,8 +17,9 @@
 #
 class User < ApplicationRecord
   authenticates_with_sorcery!
-  has_many :bookmarks
+  has_many :bookmarks, dependent: :destroy
   has_many :bookmark_recipes, through: :bookmarks, source: :recipe
+  has_many :comments, dependent: :destroy
   validates :password, length: { minimum: 8 }, if: -> { new_record? || changes[:crypted_password] }
   validates :password, confirmation: true, if: -> { new_record? || changes[:crypted_password] }
   validates :password_confirmation, presence: true, if: -> { new_record? || changes[:crypted_password] }
@@ -36,6 +37,10 @@ class User < ApplicationRecord
 
   def bookmark?(recipe)
     bookmark_recipes.include?(recipe)
+  end
+
+  def owner?(object)
+    id == object&.user_id
   end
 
   private

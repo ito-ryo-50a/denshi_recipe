@@ -1,0 +1,6 @@
+tr id="comment-#{comment.id}"
+  td = comment.user.nickname
+  td = simple_format(h(comment.content))
+  - if current_user.owner?(comment)
+    td = link_to '編集', edit_comment_path(comment), class: 'btn btn-secondary'
+    td = link_to '削除', comment_path(comment), data: { turbo_method: :delete, turbo_confirm: '削除しますか？' }, class: 'btn btn-danger'

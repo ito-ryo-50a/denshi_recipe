@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   resources :recipes do
     resources :recipe_ingredients
     resources :recipe_details
+    resources :comments, only: %i[create edit destroy], shallow: true
     collection do
       get :bookmarks
     end

@@ -25,4 +25,6 @@ h1.text-center.text-2xl.font-bold.my-10 レシピ詳細
       h2.text-2xl.font-bold = "作り方"
       - @recipe.recipe_procedures.order(:order).each do |procedure|
         li = "#{procedure.procedure}"
+  = render 'comments/form', comment: @comment, recipe: @recipe
+  = render @comments
   = link_to '戻る', recipes_path, class: "btn btn-secondary w-1/5 mt-4 mb-10"
