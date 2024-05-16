@@ -1,0 +1,8 @@
+= form_with model: comment, url: recipe_comments_path(@recipe), local: true do |f|
+  = render 'shared/error_messages', object: comment
+  .form-group
+    = f.label :content
+    = f.text_area :content, class: 'form-control'
+  .form-group
+    = f.submit 'コメントする', class: 'btn btn-primary'
+  = link_to 'キャンセル', recipe_path(@recipe), class: 'btn btn-secondary'

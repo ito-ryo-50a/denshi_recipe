@@ -7,7 +7,10 @@ class RecipesController < ApplicationController
     @recipes = Recipe.page(params[:page]).per(10).order(updated_at: :desc)
   end
 
-  def show; end
+  def show
+    @comment = Comment.new
+    @comments = @recipe.comments.includes(:user).order(created_at: :desc)
+  end
 
   def new; end
 

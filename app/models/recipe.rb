@@ -25,5 +25,6 @@ class Recipe < ApplicationRecord
   has_many :bookmarks, dependent: :destroy
   has_many :recipe_procedures, dependent: :destroy
   has_many :recipe_ingredients, dependent: :destroy
+  has_many :comments, dependent: :destroy
   accepts_nested_attributes_for :recipe_ingredients, :recipe_procedures, allow_destroy: true
 end
