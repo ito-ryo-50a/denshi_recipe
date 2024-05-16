@@ -1,3 +1,5 @@
+console.log("Hello from ingredient_suggestions.js!");
+
 document.addEventListener("DOMContentLoaded", () => {
   const inputs = document.querySelectorAll('input[id^="ingredient"]');
 

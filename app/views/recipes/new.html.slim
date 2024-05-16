@@ -6,21 +6,21 @@ h1.text-center.text-2xl.font-bold.my-10 レシピを生成する
   = form_with model: @recipe, url: recipes_path, local: true, class: "space-y-4" do |f|
     .form-group
       = f.label :cuisine_type, '料理の種類'
-      = f.select :cuisine_type, ['和食', '洋食', '中華', 'イタリアン'], {}, class: "select select-bordered w-full", autofocus: true
+      = f.select :cuisine_type, ['和食', '洋食', '中華', 'イタリアン'], {}, class: "select select-bordered w-full"
     .form-group
       = f.label :dish_type, '料理のタイプ'
       = f.select :dish_type, ['主菜', '副菜', '主食', 'デザート'], {}, class: "select select-bordered w-full"
     .form-group
       = f.label :ingredient1, '使いたい食材1'
-      = f.text_field :ingredient1, class: "input input-bordered w-full", id: "ingredient1", autocomplete: "off"
+      = f.text_field :ingredient1, class: "input input-bordered w-full", id: "ingredient1"
       .suggestions#ingredient1_suggestions
     .form-group
       = f.label :ingredient2, '使いたい食材2'
-      = f.text_field :ingredient2, class: "input input-bordered w-full", id: "ingredient2", autocomplete: "off"
+      = f.text_field :ingredient2, class: "input input-bordered w-full", id: "ingredient2"
       .suggestions#ingredient2_suggestions
     .form-group
       = f.label :ingredient3, '使いたい食材3'
-      = f.text_field :ingredient3, class: "input input-bordered w-full", id: "ingredient3", autocomplete: "off"
+      = f.text_field :ingredient3, class: "input input-bordered w-full", id: "ingredient3"
       .suggestions#ingredient3_suggestions
     .form-group
       = f.label :number, '食べる人数(名)'
