@@ -10,14 +10,14 @@ footer.footer.p-10.bg-header-footer.text-base-content
       | Providing reliable tech since 1992
   nav
     h6.footer-title アプリについて
-    a.link.link-hover 操作方法
-    a.link.link-hover よくある質問
-    a.link.link-hover 利用規約
-    a.link.link-hover プライバシーポリシー
+    = link_to '操作方法', how_to_use_path, class: 'link link-hover'
+    = link_to 'よくある質問', faq_path, class: 'link link-hover'
+    = link_to '利用規約', term_of_service_path, class: 'link link-hover'
+    = link_to 'プライバシーポリシー', privacy_policy_path, class: 'link link-hover'
   nav
     h6.footer-title サポート
-    a.link.link-hover お問い合わせ
+    = link_to 'お問い合わせ', "https://forms.gle/kZJzumkcJ66oobg17", class: 'link link-hover'
   nav
     h6.footer-title 作成者
-    a.link.link-hover X
-    a.link.link-hover GitHub
+    = link_to 'X', '#', class: 'link link-hover'
+    = link_to 'GitHub', '#', class: 'link link-hover'
